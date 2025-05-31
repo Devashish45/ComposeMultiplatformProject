@@ -11,8 +11,10 @@ import io.ktor.http.contentType
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
-object KtorClient {
+object KtorClientMovieDB {
 
+    //https://api.themoviedb.org/3/trending/movie/day?language=en-US
+    private const val HOST_MOVIE_DB = "api.themoviedb.org"
     fun getInstance(): HttpClient = HttpClient {
 
         install(ContentNegotiation) {
@@ -20,10 +22,9 @@ object KtorClient {
                 ignoreUnknownKeys = true
             })
         }
-        //https://api.themoviedb.org/3/trending/movie/day?language=en-US
         install(DefaultRequest) {
             url {
-                host = "api.themoviedb.org"
+                host = HOST_MOVIE_DB
                 protocol = URLProtocol.HTTPS
                 contentType(ContentType.Application.Json)
                 accept(ContentType.Application.Json)
