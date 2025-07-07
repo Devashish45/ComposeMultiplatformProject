@@ -1,17 +1,21 @@
-package org.example.home.domain.model
+package org.example.home.data.model.remote
 
-data class TrendingMovieResponseDomain(
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class TrendingMovieDto(
     val page: Int,
     val results: List<Result>,
-    val total_pages: Int,
-    val total_results: Int
+    @SerialName("total_pages") val total_pages: Int,
+    @SerialName("total_results") val total_results: Int
 ) {
+    @Serializable
     data class Result(
         val adult: Boolean,
         val backdrop_path: String,
         val genre_ids: List<Int>,
         val id: Int,
-        val media_type: String,
         val original_language: String,
         val original_title: String,
         val overview: String,

@@ -1,11 +1,12 @@
 package org.example.home.data.mappers
 
-import org.example.coreNetwork.model.TrendingMovieResponse
-import org.example.home.domain.model.TrendingMovieResponseDomain
+import org.example.coreNetwork.model.TrendingMovieDto
+import org.example.home.domain.model.TrendingMovies
+
 
 const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500"
-fun TrendingMovieResponse.toDomain(): TrendingMovieResponseDomain {
-    return TrendingMovieResponseDomain(
+fun TrendingMovieDto.toDomain(): TrendingMovies {
+    return TrendingMovies(
         page = this.page,
         results = this.results.map { it.toDomain() },
         total_pages = this.total_pages,
@@ -13,13 +14,12 @@ fun TrendingMovieResponse.toDomain(): TrendingMovieResponseDomain {
     )
 }
 
-fun TrendingMovieResponse.Result.toDomain(): TrendingMovieResponseDomain.Result {
-    return TrendingMovieResponseDomain.Result(
+fun TrendingMovieDto.Result.toDomain(): TrendingMovies.Result {
+    return TrendingMovies.Result(
         adult = this.adult,
         backdrop_path = this.backdrop_path,
         genre_ids = this.genre_ids,
         id = this.id,
-        media_type = this.media_type,
         original_language = this.original_language,
         original_title = this.original_title,
         overview = this.overview,

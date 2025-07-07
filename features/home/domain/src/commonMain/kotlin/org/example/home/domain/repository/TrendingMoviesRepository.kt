@@ -1,8 +1,8 @@
 package org.example.home.domain.repository
 
-import org.example.home.domain.model.TrendingMovieResponseDomain
+import org.example.home.domain.model.TrendingMovies
 
 interface TrendingMoviesRepository {
 
-    suspend fun getTrendingMovies(): Result<TrendingMovieResponseDomain>
+    suspend fun getTrendingMovies(): Result<TrendingMovies>
 }

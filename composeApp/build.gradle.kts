@@ -53,6 +53,10 @@ kotlin {
     }
     
     sourceSets {
+        commonMain {
+            resources.srcDir("src/commonMain/composeResources")
+        }
+
         val desktopMain by getting
         
         androidMain.dependencies {
